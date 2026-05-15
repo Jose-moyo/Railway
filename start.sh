@@ -1,13 +1,9 @@
 #!/bin/bash
 
-# Notification de démarrage dans les logs Railway
-echo "Démarrage de l'environnement Ubuntu..."
+echo "Démarrage de l'application Railway..."
 
-# Exécution du code personnalisé (Exemple avec un script Python)
-if [ -f "main.py" ]; then
-    echo "Exécution de main.py..."
-    python3 main.py
-fi
+python3 main.py#!/bin/bash
 
-# Maintien du conteneur en cours d'exécution
-tail -f /dev/null
+echo "Démarrage de l'application Railway..."
+
+python3 main.py
