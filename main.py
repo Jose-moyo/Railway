@@ -1,11 +1,16 @@
+from flask import Flask
 import os
 import sys
 
-def main():
-    print("Code applicatif exécuté avec succès sur le conteneur Ubuntu.")
-    print(# Équivalent de l'affichage de la version de Python
-        f"Version de Python active : {sys.version}"
-    )
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return f"""
+    <h1>Application Railway active</h1>
+    <p>Python : {sys.version}</p>
+    """
 
 if __name__ == "__main__":
-    main()
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
