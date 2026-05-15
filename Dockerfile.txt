@@ -1,25 +1,20 @@
 FROM ubuntu:24.04
 
-# Configuration du mode non interactif pour les installations
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Mise à jour du système et installation des outils de base
 RUN apt-get update && apt-get install -y \
-    curl \
-    git \
     python3 \
     python3-pip \
-    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Définition du répertoire de travail dans le conteneur
 WORKDIR /app
 
-# Copie de l'intégralité des fichiers du dépôt GitHub
 COPY . .
 
-# Rendre le script de démarrage exécutable
+RUN pip3 install flask
+
 RUN chmod +x start.sh
 
-# Commande d'exécution principale
+EXPOSE 8080
+
 CMD ["./start.sh"]
